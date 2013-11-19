@@ -1,0 +1,10 @@
+{
+  "name": "telljs",
+  "description": "TellStick Web Gui with NodeJS",
+  "version": "0.1",
+  "private": false,
+  "dependencies": {
+    "express": "3.x"
+  }
+}
+

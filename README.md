@@ -3,6 +3,8 @@ telljs
 
 TellStick Web GUI and REST API with NodeJS
 
+TellStick: http://www.telldus.se/products/tellstick
+
 Installation
 ------
 Run commands:

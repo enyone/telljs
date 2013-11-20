@@ -37,7 +37,7 @@ app.get('/css', function(req, res) {
 });
 
 app.get('/device/on/:id', function(req, res) {
-  exec('tdtool --on ' + req.params.id, function(error, stdout, stderr) {} );
+  exec('tdtool --on ' + parseInt(req.params.id), function(error, stdout, stderr) {} );
   var body = '{error: false}';
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Content-Length', body.length);
@@ -45,7 +45,7 @@ app.get('/device/on/:id', function(req, res) {
 });
 
 app.get('/device/off/:id', function(req, res) {
-  exec('tdtool --off ' + req.params.id, function(error, stdout, stderr) {} );
+  exec('tdtool --off ' + parseInt(req.params.id), function(error, stdout, stderr) {} );
   var body = '{error: false}';
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Content-Length', body.length);

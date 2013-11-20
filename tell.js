@@ -8,10 +8,49 @@
 
 var express = require('express');
 var exec = require('child_process').exec;
+var fs = require('fs');
 
 var app = express();
 var devices = [];
 var sensors = [];
+
+var pageData = fs.readFileSync('page.html','utf8');
+var jsData = fs.readFileSync('jquery+mobile.js','utf8');
+var cssData = fs.readFileSync('jquery.css','utf8');
+
+app.get('/', function(req, res) {
+  res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Content-Length', pageData.length);
+  res.end(pageData);
+});
+
+app.get('/js', function(req, res) {
+  res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Content-Length', jsData.length);
+  res.end(jsData);
+});
+
+app.get('/css', function(req, res) {
+  res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Content-Length', cssData.length);
+  res.end(cssData);
+});
+
+app.get('/device/on/:id', function(req, res) {
+  exec('tdtool --on ' + req.params.id, function(error, stdout, stderr) {} );
+  var body = '{error: false}';
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Content-Length', body.length);
+  res.end(body);
+});
+
+app.get('/device/off/:id', function(req, res) {
+  exec('tdtool --off ' + req.params.id, function(error, stdout, stderr) {} );
+  var body = '{error: false}';
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Content-Length', body.length);
+  res.end(body);
+});
 
 app.get('/devices', function(req, res) {
   var body = JSON.stringify(devices);

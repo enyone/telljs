@@ -1,0 +1,50 @@
+<html>
+   <head>
+      <link rel="stylesheet" href="css">
+      <script src="js"></script>
+      <script>
+         function repaint() {
+            $.getJSON( "devices", function( devices ) {
+               for(index in devices) {
+                  var device = devices[index];
+                  
+                  var selected = '';
+                  if(device.lastsentcommand == 'ON')
+                    selected = ' selected';
+                    
+                  var select = $('<label for="device_'+device.id+'">'+device.name+':</label>'
+                  + '<select name="device_'+device.id+'" id="device_'+device.id+'" data-role="slider">'
+                  + '<option value="off">Off</option><option value="on"'+selected+'>On</option></select>');
+                  
+                  select.bind( "change", function(event, ui) {
+                    $.getJSON( "device/"+$(this).val()+"/"+$(this).attr('id').split("_")[1], function( status ) {} );
+                  });
+                  
+                  $("#content").append(select).trigger('create');
+               }
+            });
+            
+            $.getJSON( "sensors", function( sensors ) {
+               for(index in sensors) {
+                  var sensor = sensors[index];
+                  
+                  $("#content").append("<p>Temperature: "+sensor.temperature+"<br>Humidity: "+sensor.humidity+"</p>");
+               }
+            });
+         }
+         
+         $(document).ready(function () {
+           repaint();
+         });
+      </script>
+   </head>
+   <body>
+      <div data-role="page">
+        <div data-role="header">
+          <h1>telljs demo app</h1>
+        </div>
+        <div data-role="content" id="content"></div>
+      </div>
+   </body>
+</html>
+

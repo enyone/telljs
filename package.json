@@ -4,9 +4,7 @@
   "version": "0.0.1",
   "private": false,
   "dependencies": {
-    "forever": "0.10.x",
-    "express": "3.x",
-    "asyncblock": "2.1.x"
+    "express": "3.x"
   }
 }
 

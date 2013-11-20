@@ -1,7 +1,7 @@
 telljs
 ======
 
-TellStick Web Gui with NodeJS
+TellStick Web GUI and REST API with NodeJS
 
 Installation
 ------
@@ -15,6 +15,16 @@ npm install
 
 Starting server
 ------
+Run commands:
 ```
+node tell
+```
+
+
+Starting as daemon
+------
+Run commands:
+```
+npm install -g forever
 forever start tell.js
 ```

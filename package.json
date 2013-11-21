@@ -1,6 +1,6 @@
 {
   "name": "telljs",
-  "description": "TellStick Web Gui with NodeJS",
+  "description": "TellStick Web GUI and REST API with NodeJS",
   "version": "0.0.1",
   "private": false,
   "dependencies": {

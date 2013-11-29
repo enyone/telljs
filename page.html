@@ -1,5 +1,6 @@
 <html>
    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="css">
       <script src="js"></script>
       <script>
@@ -12,12 +13,12 @@
                   if(device.lastsentcommand == 'ON')
                     selected = ' selected';
                     
-                  var select = $('<label for="device_'+device.id+'">'+device.name+':</label>'
-                  + '<select name="device_'+device.id+'" id="device_'+device.id+'" data-role="slider">'
-                  + '<option value="off">Off</option><option value="on"'+selected+'>On</option></select>');
+                  var select = $('<div data-role="fieldcontain"><label for="device_'+device.id+'">'+device.name+':</label>'
+                  + '<select name="device_'+device.id+'" id="device_'+device.id+'" data-mini="true" data-role="slider" data-theme="c" data-track-theme="a">'
+                  + '<option value="off">Off</option><option value="on"'+selected+'>On</option></select></div>');
                   
                   select.bind( "change", function(event, ui) {
-                    $.getJSON( "device/"+$(this).val()+"/"+$(this).attr('id').split("_")[1], function( status ) {} );
+                    $.getJSON( "device/"+$("select", this).val()+"/"+$("select", this).attr('id').split("_")[1], function( status ) {} );
                   });
                   
                   $("#content").append(select).trigger('create');

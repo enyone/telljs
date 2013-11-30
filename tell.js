@@ -115,7 +115,7 @@ var timer = setInterval(function() {
       sensors.push(params);
     }
   });
-}, 1000);
+}, 10000);
 
 // Check tdtool installation
 exec('tdtool', function(error, stdout, stderr) {
